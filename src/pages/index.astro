@@ -1,17 +1,266 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { projects } from "../data/projects";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+	title="Lior Abitbol | Builder, engineering leader, systems thinker"
+	description="The professional home of Lior Abitbol: AI platform projects, resume, blog, and notes on building thoughtful software systems."
+>
+	<section class="hero">
+		<div class="hero-inner">
+				<div class="hero-copy">
+					<p class="section-kicker">Professional home</p>
+					<h1>Lior Abitbol builds platform systems, developer workflows, and technical strategy.</h1>
+					<p>
+						I design and build platform systems, developer workflows, and governance models
+						that help teams move faster while maintaining clear standards and operational
+						control. This site is a working record of what I build, how I think, and what
+						I am exploring next.
+					</p>
+				<div class="button-row">
+					<a class="button" href="mailto:lior@liorabitbol.com">Start a conversation</a>
+					<a class="button secondary" href="/blog">Read the blog</a>
+				</div>
+			</div>
+			<div class="signal-panel" aria-label="Professional focus areas">
+					<div>
+						<span>01</span>
+						<strong>Engineering systems</strong>
+						<p>Platform architecture, delivery systems, and high-leverage tooling.</p>
+					</div>
+					<div>
+						<span>02</span>
+						<strong>Technical leadership</strong>
+						<p>Decision-making, operating rhythms, and engineering standards at scale.</p>
+					</div>
+					<div>
+						<span>03</span>
+						<strong>Writing in public</strong>
+						<p>Writing on platform engineering, AI systems, and how teams build and operate software.</p>
+					</div>
+			</div>
+		</div>
+	</section>
+
+		<section class="page-section" id="projects">
+			<p class="section-kicker">Projects</p>
+			<h2 class="section-heading">Platform systems spanning AI, developer experience, and infrastructure.</h2>
+			<p class="section-copy">
+				Built around governance, reproducibility, and developer workflows, these systems
+				are designed as platform capabilities, not
+				standalone tools.
+			</p>
+		<div class="project-grid">
+			{projects.map((project) => (
+				<a class="project-card" href={`/projects/${project.slug}`}>
+					<span>{project.label}</span>
+					<h3>{project.name}</h3>
+					<p>{project.summary}</p>
+				</a>
+			))}
+		</div>
+	</section>
+
+	<section class="resume-band" id="resume">
+		<div class="page-section resume-inner">
+				<div>
+					<p class="section-kicker">Resume</p>
+					<h2 class="section-heading">Platform engineering and developer experience, grounded in infrastructure and automation.</h2>
+				</div>
+				<div class="section-copy">
+					<p>
+						Staff/Principal-level experience building internal platforms, developer
+						tooling, governance-as-code systems, AWS automation, and enterprise
+						infrastructure capabilities across regulated environments.
+					</p>				
+			    </div>
+				<div class="button-row">
+				    <a class="button" href="/resume">View resume</a>
+				</div>
+		</div>
+	</section>
+
+	<section class="writing-band" id="blog-preview">
+		<div class="page-section writing-inner">
+				<div>
+					<p class="section-kicker">Blog</p>
+					<h2 class="section-heading">Writing about platform engineering, developer experience, and AI-enabled systems.</h2>
+				</div>
+				<p class="section-copy">
+					Notes and essays on the operating models behind engineering platforms:
+					infrastructure standards, governance-as-code, developer workflows, and the
+					choices that make technical systems easier to run at scale.
+				</p>
+			<a class="button secondary" href="/blog">Open blog</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.hero {
+		border-top: 1px solid var(--line);
+		border-bottom: 1px solid var(--line);
+		background:
+			linear-gradient(120deg, rgba(15, 118, 110, 0.14), transparent 42%),
+			linear-gradient(315deg, rgba(183, 121, 31, 0.16), transparent 38%), var(--surface);
+	}
+
+	.hero-inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.65fr);
+		gap: clamp(2rem, 5vw, 4rem);
+		width: min(1120px, calc(100% - 2rem));
+		min-height: calc(100svh - 10rem);
+		margin: 0 auto;
+		padding: clamp(4rem, 8vw, 7rem) 0;
+		align-items: center;
+	}
+
+		.hero h1 {
+			max-width: 850px;
+			margin: 0.5rem 0 1.25rem;
+			font-size: clamp(2.45rem, 5.4vw, 4.8rem);
+			line-height: 1;
+		}
+
+	.hero-copy > p:last-of-type {
+		max-width: 700px;
+		color: var(--muted);
+		font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+	}
+
+	.signal-panel {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.signal-panel div,
+	.project-card {
+		display: grid;
+		gap: 0.35rem;
+		border: 1px solid var(--line);
+		border-radius: 8px;
+		background: rgba(255, 255, 255, 0.76);
+		color: var(--ink);
+		box-shadow: var(--shadow);
+		min-height: 13rem;
+		padding: 1.25rem;
+		text-decoration: none;
+	}
+
+	.signal-panel span {
+		color: var(--clay);
+		font-size: 0.8rem;
+		font-weight: 800;
+	}
+
+	.signal-panel strong,
+	.project-grid h3 {
+		display: block;
+		margin: 0.3rem 0;
+		font-size: 1.1rem;
+		line-height: 1.25;
+	}
+
+	.signal-panel p,
+	.project-grid p {
+		color: var(--muted);
+	}
+
+	.project-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+
+	.project-card {
+		transition:
+			box-shadow 160ms ease,
+			border-color 160ms ease,
+			transform 160ms ease;
+	}
+
+	.project-card:hover {
+		border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+		box-shadow: 0 18px 45px rgba(35, 34, 30, 0.1);
+		color: var(--ink);
+		transform: translateY(-2px);
+	}
+
+	.project-grid span {
+		color: var(--clay);
+		font-size: 0.78rem;
+		font-weight: 800;
+		text-transform: uppercase;
+	}
+
+	.project-grid h3 {
+		margin-top: 0;
+	}
+
+	.resume-band {
+		border-top: 1px solid var(--line);
+		background: var(--surface);
+	}
+
+	.resume-inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(280px, 0.68fr);
+		gap: 2rem;
+		align-items: center;
+	}
+
+	.resume-summary {
+		display: grid;
+		gap: 1.5rem;
+		color: var(--muted);
+	}
+
+	.resume-summary .button {
+		width: fit-content;
+	}
+
+	.writing-band {
+		background: var(--ink);
+		color: var(--paper);
+	}
+
+	.writing-inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(260px, 0.7fr);
+		gap: 2rem;
+		align-items: end;
+	}
+
+	.writing-band .section-kicker {
+		color: #8dd8cf;
+	}
+
+	.writing-band .section-copy {
+		color: #ddd8ca;
+	}
+
+	.writing-band .button.secondary {
+		border-color: var(--paper);
+		color: var(--paper);
+		width: fit-content;
+	}
+
+	@media (max-width: 860px) {
+		.hero-inner,
+		.resume-inner,
+		.writing-inner {
+			grid-template-columns: 1fr;
+		}
+
+		.hero-inner {
+			min-height: auto;
+		}
+
+		.project-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

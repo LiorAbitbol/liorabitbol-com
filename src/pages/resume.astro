@@ -1,0 +1,484 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const capabilities = [
+	{
+		title: "Platform Engineering & Internal Developer Platforms",
+		description:
+			"Design and implementation of platform capabilities across cloud and on-prem environments, enabling standardized service delivery, infrastructure automation, and scalable engineering workflows.",
+	},
+	{
+		title: "Developer Experience (DevEx) & Tooling",
+		description:
+			"Building developer-facing systems including Backstage-based portals, internal CLIs, validation frameworks, and workflow orchestration that reduce friction and improve onboarding and delivery velocity.",
+	},
+	{
+		title: "Governance-as-Code & Policy Enforcement",
+		description:
+			"Embedding standards into engineering systems through policy-driven validation, change automation, secrets management, and auditability across infrastructure and application workflows.",
+	},
+	{
+		title: "Cloud & Automation (AWS)",
+		description:
+			"Development of serverless and automation-driven systems using Python, Lambda, API Gateway, DynamoDB, IAM, and CloudFormation to support scalable, event-driven platform capabilities.",
+	},
+	{
+		title: "AI-Augmented Engineering Systems",
+		description:
+			"Applying AI tools and local/cloud LLMs to enhance development workflows, including policy-aware routing, code generation, and developer productivity improvements.",
+	},
+	{
+		title: "Technical Leadership & Cross-Team Influence",
+		description:
+			"Leading architecture, defining standards, driving adoption, and mentoring engineers across teams, with a focus on building systems that scale beyond individual contributors.",
+	},
+];
+
+const experience = [
+	{
+		role: "Independent Platform, DevEx, and AI Engineer",
+		org: "Independent",
+		period: "Jan 2026 - Present",
+		points: [
+			"Designing and building platform capabilities and developer experience systems through open-source projects and structured experimentation, focused on governance, automation, and AI-augmented engineering workflows.",
+			"Built Policy Mesh, an open-source AI control plane that deterministically routes inference across local and cloud LLMs based on cost, data sensitivity, and policy, with rule-based evaluation, explainable decisioning, and structured audit logging for governance and observability.",
+			"Built StackLayer, a reproducible platform lab that provisions a layered, enterprise-style environment including Kubernetes, CI/CD, control plane, developer experience, and observability, enabling realistic testing of platform patterns, pipelines, and governance models outside of cloud dependencies.",
+			"Developed and applied a structured AI-assisted development workflow using tools such as Codex, Claude Code, and Cursor, orchestrating planning, implementation, review, and context management to accelerate delivery while maintaining control and reproducibility.",
+		],
+	},
+	{
+		role: "Senior Technical Lead (Principal Engineering)",
+		org: "Freddie Mac",
+		period: "Dec 2022 - Nov 2025",
+		points: [
+			"Represented the Principal Engineering organization in a cross-team initiative spanning engineering, product, and delivery functions, driving alignment on platform architecture, testing strategy, and workflow standardization.",
+			"Designed and led development of a testing and validation framework, including architecture, starter implementations, and a Python-based orchestration layer for ordered CLI and API workflows, enabling consistent validation patterns across teams.",
+			"Built platform-level automation for deployment validation, including a Python CLI for Rafay environment health and status checks, integrating validation directly into delivery workflows.",
+			"Architected and implemented a Change Management-as-Code platform on AWS using Python, Lambda, API Gateway, DynamoDB, IAM, Secrets Manager, and CloudFormation, enabling engineering teams to programmatically manage the full lifecycle of ServiceNow change records.",
+			"Integrated change automation into CI/CD and platform workflows, enabling systems such as Rafay and Terraform pipelines to create, approve, implement, and close changes through synchronous and asynchronous APIs with DynamoDB-backed state tracking.",
+			"Led Backstage from proof of concept to production as an internal developer platform, owning architecture, roadmap, and backlog, and delivering React plugin integrations for LDAP and ServiceNow to enable service onboarding and workflow visibility.",
+			"Developed governance tooling for secrets management in collaboration with the HashiCorp Vault team, including Python CLI and SDK components that enforced naming standards, policy controls, logging, and auditability across teams.",
+		],
+	},
+	{
+		role: "Platform Automation Director",
+		org: "Freddie Mac",
+		period: "Dec 2019 - Dec 2022",
+		points: [
+			"Led multiple engineering teams totaling 20+ engineers responsible for enterprise platform automation, hybrid cloud provisioning, and internal tooling across VMware vRealize, custom frameworks, and supporting services.",
+			"Owned the enterprise automation platform, VMware vRealize, as both product owner and technical leader, driving modernization of hybrid cloud provisioning, policy models, and operating practices.",
+			"Reduced infrastructure provisioning time from 1-3 days to under 2 hours by designing and implementing end-to-end automation integrated with ServiceNow change management, approval workflows, and CMDB recording.",
+			"Established enterprise automation standards and CI/CD frameworks using Ansible and Jenkins to support day-2 operations, improve release velocity, and reduce manual intervention across teams.",
+			"Partnered across engineering, enterprise architecture, security, and platform teams to deliver compliant, scalable platform capabilities aligned with governance and operational requirements.",
+			"Built and introduced a platform metrics and visibility system using Python/Django, aggregating VMware and CMDB data to provide insight into resource usage, ownership, and automation health, improving transparency and operational decision-making.",
+		],
+	},
+	{
+		role: "Senior Platform Automation Lead",
+		org: "CIT Bank",
+		period: "Mar 2014 - Dec 2019",
+		points: [
+			"Led engineering and operations for a distributed private cloud platform supporting ~4,000 virtual machines across multiple geographically distributed datacenters, providing standardized infrastructure services to internal teams.",
+			"Designed and delivered IaaS and XaaS platform capabilities, enabling fully configured, operational, and micro-segmented Windows and Linux environments as repeatable, service-based offerings.",
+			"Built end-to-end automation across the infrastructure lifecycle by integrating systems including ServiceNow, VMware NSX, Active Directory, Citrix NetScaler, Tripwire, Infoblox, and IPAM platforms via REST APIs, enabling automated provisioning, compliance enforcement, and decommissioning workflows.",
+			"Developed internal platform applications using Python/Django for compliance, cloud metrics, and operational visibility, including CMDB correlation, rule-based ownership assignment, and performance/capacity dashboards.",
+			"Created a reusable automation framework for software-defined networking with VMware NSX, abstracting REST APIs and data models into Python-based libraries and significantly accelerating development of network automation workflows across the team.",
+			"Oversaw cross-functional engineering and operational delivery, including internal and vendor resources, code reviews, escalation support, intake prioritization, and controlled release processes within regulated environments.",
+		],
+	},
+	{
+		role: "Senior Infrastructure Engineer",
+		org: "CIT Bank",
+		period: "Jul 2010 - Feb 2014",
+		points: [
+			"Managed and supported enterprise infrastructure across Windows, virtualization, and core services, establishing a strong foundation in large-scale systems operations.",
+			"Provided technical leadership to an offshore engineering team of 8 engineers, including mentoring, escalation support, operational guidance, and change control oversight.",
+			"Led infrastructure initiatives including system upgrades, platform implementations, and disaster recovery exercises, ensuring readiness, reliability, and controlled execution in regulated environments.",
+			"Introduced early automation and reporting capabilities using Python, C#, Perl, and QlikView, including ETL pipelines, data models, and operational dashboards to improve visibility and reduce manual effort.",
+			"Designed and implemented enterprise security baselines for Windows Server environments using Active Directory Group Policy and monitoring systems, improving consistency and compliance across infrastructure.",
+		],
+	},
+	{
+			role: "Earlier Infrastructure and Systems Engineering Roles",
+			org: "Humble Monkey and Lord Abbett",
+			period: "Aug 1997 - Jul 2009",
+			points: [
+				"Progressed through roles in desktop, systems, and infrastructure engineering, building a foundation across enterprise platforms and operational environments.",
+				"Supported and engineered large-scale systems across Windows, Citrix, VMware, Active Directory, storage, and disaster recovery, including high-availability trading platforms.",
+				"Led and mentored engineering teams, coordinated infrastructure initiatives, and served as a liaison across operations, support, and business stakeholders.",
+				"Developed early automation and reporting solutions using scripting and application frameworks to improve operational efficiency, data visibility, and system management.",
+				"Delivered infrastructure modernization efforts including virtualization, datacenter consolidation, high availability, and business continuity initiatives.",
+			],
+		},
+	];
+
+const education = [
+	{
+		school: "Stevens Institute of Technology",
+		degree: "M.S., Information Systems",
+		focus: "Graduate study in systems, information architecture, and technology management.",
+	},
+	{
+		school: "American InterContinental University",
+		degree: "B.S., Information Technology",
+		focus: "Undergraduate foundation in software, infrastructure, and applied IT practices.",
+	},
+	{
+		school: "Technical Career Institutes",
+		degree: "A.A.S., Electronics Engineering Technology",
+		focus: "Technical grounding in electronics, systems, and engineering fundamentals.",
+	},
+];
+---
+
+<BaseLayout
+	title="Resume | Lior Abitbol"
+	description="Resume for Lior Abitbol, covering AI platform engineering, developer tools, cloud automation, infrastructure, and engineering leadership."
+>
+	<section class="resume-hero">
+		<div class="resume-hero-inner">
+			<div>
+				<p class="section-kicker">Resume</p>
+				<h1>Lior Abitbol</h1>
+				<p class="hero-statement">
+					Staff/Principal Platform Engineer focused on developer experience, internal
+					platforms, and AI-enabled engineering systems.
+				</p>
+				<p>
+					I build and lead platform capabilities that help teams ship faster through
+					clear standards, automation, and governance-as-code.
+				</p>
+			</div>
+			<aside class="contact-panel" aria-label="Resume contact details">
+				<a href="mailto:lior@liorabitbol.com">
+					<svg aria-hidden="true" viewBox="0 0 24 24">
+						<path d="M4 6h16v12H4V6Z" />
+						<path d="m4 8 8 5 8-5" />
+					</svg>
+					lior@liorabitbol.com
+				</a>
+				<a href="https://github.com/LiorAbitbol/" target="_blank" rel="noreferrer">
+					<svg aria-hidden="true" viewBox="0 0 24 24">
+						<path d="m8 9-4 3 4 3" />
+						<path d="m16 9 4 3-4 3" />
+						<path d="m14 5-4 14" />
+					</svg>
+					GitHub
+				</a>
+				<a href="https://www.linkedin.com/in/liorabitbol/" target="_blank" rel="noreferrer">
+					<svg aria-hidden="true" viewBox="0 0 24 24">
+						<path d="M4 9h4v11H4V9Z" />
+						<path d="M4 4h4v3H4V4Z" />
+						<path d="M11 9h4v1.7A4 4 0 0 1 22 13.4V20h-4v-6a1.8 1.8 0 0 0-3.6 0v6H11V9Z" />
+					</svg>
+					LinkedIn
+				</a>
+			</aside>
+		</div>
+	</section>
+
+		<section class="page-section resume-grid">
+			<section>
+				<p class="section-kicker">Core Capabilities</p>
+				<div class="capability-list">
+				{capabilities.map((capability) => (
+					<article>
+						<h3>{capability.title}</h3>
+						<p>{capability.description}</p>
+					</article>
+				))}
+			</div>
+		</section>
+	</section>
+
+	<section class="page-section experience">
+			<div class="section-head">
+				<p class="section-kicker">Professional Experience</p>
+				<p>
+					Experience across platform engineering, developer experience, and automation,
+					focused on building systems that improve engineering velocity, enforce
+					standards, and scale across teams.
+				</p>
+			</div>
+		<div class="timeline">
+			{experience.map((job) => (
+				<article>
+					<div class="job-meta">
+						<h3>{job.role}</h3>
+						<p>{job.org}</p>
+						<span>{job.period}</span>
+					</div>
+					<ul>
+						{job.points.map((point) => <li>{point}</li>)}
+					</ul>
+				</article>
+			))}
+		</div>
+	</section>
+
+		<section class="page-section education">
+			<div>
+				<p class="section-kicker">Education</p>
+			</div>
+			<div class="education-list">
+				{education.map((item) => (
+				<article>
+					<strong>{item.degree}</strong>
+					<h3>{item.school}</h3>
+					<p>{item.focus}</p>
+				</article>
+			))}
+		</div>
+	</section>
+
+	<section class="page-section resume-cta">
+			<div>
+				<p class="section-kicker">Contact</p>
+				<h2>Interested in working together?</h2>
+				<p>
+					I focus on platform engineering, developer experience, and AI-enabled
+					engineering systems, particularly where teams need to improve delivery speed
+					while maintaining strong governance, standards, and operational control.
+				</p>
+				<p>
+					Open to discussing Staff/Principal roles, consulting, and platform-focused
+					initiatives.
+				</p>
+			</div>
+		<a class="button" href="mailto:lior@liorabitbol.com">Contact Lior</a>
+	</section>
+</BaseLayout>
+
+<style>
+	.resume-hero {
+		border-top: 1px solid var(--line);
+		border-bottom: 1px solid var(--line);
+		background:
+			linear-gradient(120deg, rgba(15, 118, 110, 0.12), transparent 44%),
+			linear-gradient(315deg, rgba(154, 91, 67, 0.12), transparent 38%), var(--surface);
+	}
+
+	.resume-hero-inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(260px, 0.38fr);
+		gap: 2rem;
+		width: min(1120px, calc(100% - 2rem));
+		margin: 0 auto;
+		padding: clamp(4rem, 8vw, 7rem) 0;
+		align-items: center;
+	}
+
+	h1 {
+		margin: 0.4rem 0 1rem;
+		font-size: clamp(3.4rem, 9vw, 7.2rem);
+		line-height: 0.92;
+	}
+
+	.resume-hero p {
+		max-width: 760px;
+		color: var(--muted);
+		font-size: clamp(1.12rem, 2vw, 1.35rem);
+	}
+
+	.resume-hero .hero-statement {
+		color: var(--ink);
+		font-weight: 780;
+		margin-bottom: 0.7rem;
+	}
+
+	.contact-panel {
+		display: grid;
+		gap: 0.5rem;
+		border: 1px solid var(--line);
+		border-radius: 8px;
+		background: rgba(255, 255, 255, 0.78);
+		padding: 1.25rem;
+		color: var(--muted);
+	}
+
+	.contact-panel a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--accent-dark);
+		font-weight: 720;
+		text-decoration: none;
+		overflow-wrap: anywhere;
+	}
+
+	.contact-panel a:hover {
+		color: var(--clay);
+	}
+
+	.contact-panel svg {
+		display: block;
+		width: 16px;
+		height: 16px;
+		min-width: 16px;
+		max-width: 16px;
+		flex: 0 0 16px;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 1.8;
+	}
+
+		.resume-grid,
+		.education {
+			display: grid;
+			gap: clamp(2rem, 5vw, 3rem);
+		}
+
+			.resume-grid {
+				grid-template-columns: 1fr;
+				border-bottom: 1px solid var(--line);
+		}
+
+		.education {
+			grid-template-columns: 1fr;
+			gap: 1.2rem;
+		}
+
+	h2 {
+		margin: 0.4rem 0 1rem;
+		font-size: clamp(1.8rem, 3vw, 2.6rem);
+		line-height: 1.08;
+	}
+
+	.resume-grid p:not(.section-kicker),
+	.education > div:first-child p:not(.section-kicker),
+	.section-head p:not(.section-kicker),
+		.resume-cta p:not(.section-kicker) {
+			color: var(--muted);
+			font-size: 1.05rem;
+		}
+
+		.resume-cta p + p {
+			margin-top: 0.9rem;
+		}
+
+		.timeline ul {
+		display: grid;
+		gap: 0.7rem;
+		margin: 0;
+		padding-left: 1.1rem;
+		color: var(--muted);
+	}
+
+	.capability-list {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.capability-list article {
+		border: 1px solid var(--line);
+		border-radius: 8px;
+		background: var(--surface);
+		padding: 1rem;
+	}
+
+	.capability-list h3 {
+		margin: 0 0 0.35rem;
+		font-size: 1.08rem;
+		line-height: 1.25;
+	}
+
+	.capability-list p {
+		color: var(--muted);
+	}
+
+	.section-head {
+		max-width: 820px;
+		margin-bottom: 1.5rem;
+	}
+
+	.section-head h2 {
+		margin-bottom: 0.8rem;
+	}
+
+	.timeline {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.timeline article {
+		display: grid;
+		grid-template-columns: minmax(220px, 0.33fr) minmax(0, 1fr);
+		gap: 1.5rem;
+		border-top: 1px solid var(--line);
+		padding: 1.5rem 0;
+	}
+
+	.job-meta h3 {
+		margin: 0;
+		font-size: 1.35rem;
+		line-height: 1.2;
+	}
+
+	.job-meta p,
+	.job-meta span {
+		display: block;
+		margin-top: 0.25rem;
+		color: var(--muted);
+	}
+
+	.education {
+		border-top: 1px solid var(--line);
+	}
+
+	.education-list {
+		display: grid;
+		gap: 1.35rem;
+	}
+
+	.education-list article {
+		border: 1px solid var(--line);
+		border-radius: 8px;
+		background: var(--surface);
+		padding: 1.2rem;
+	}
+
+	.education-list strong {
+		color: var(--accent-dark);
+		font-size: 0.92rem;
+	}
+
+	.education-list h3 {
+		margin: 0.28rem 0 0.55rem;
+		font-size: 1.2rem;
+		line-height: 1.2;
+	}
+
+	.education-list p {
+		color: var(--muted);
+	}
+
+	.resume-cta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2rem;
+		border-top: 1px solid var(--line);
+	}
+
+	.resume-cta .button {
+		white-space: nowrap;
+	}
+
+	@media (max-width: 820px) {
+		.resume-hero-inner,
+		.resume-grid,
+		.timeline article,
+		.education,
+		.resume-cta {
+			grid-template-columns: 1fr;
+		}
+
+		.resume-cta {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+
+	}
+</style>

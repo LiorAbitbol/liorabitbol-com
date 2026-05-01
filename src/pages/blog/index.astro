@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const posts = [
+	{
+		title: "Terraform Modules Are an Operating Model",
+		description:
+			"A first look at a three-layer Terraform module strategy: foundation modules, pattern modules, and thin environments.",
+		date: "2026-02-10",
+		href: "/blog/terraform-modules-are-an-operating-model",
+	},
+];
+---
+
+<BaseLayout
+	title="Blog | Lior Abitbol"
+	description="Writing from Lior Abitbol on platform engineering, developer experience, AI-enabled systems, and infrastructure operating models."
+>
+	<section class="page-section blog-hero">
+		<p class="section-kicker">Blog</p>
+		<h1 class="section-heading">Writing about platform engineering, developer experience, and AI-enabled systems.</h1>
+		<p class="section-copy">
+			Notes and essays on infrastructure standards, governance-as-code, developer
+			workflows, and the operating models that make engineering platforms easier to
+			build, run, and scale.
+		</p>
+	</section>
+
+	<section class="page-section post-list" aria-label="Posts">
+		{posts.map((post) => (
+			<article>
+				<div>
+					<time datetime={post.date}>
+						{new Date(`${post.date}T00:00:00`).toLocaleDateString("en-US", {
+							month: "long",
+							day: "numeric",
+							year: "numeric",
+						})}
+					</time>
+					<h2><a href={post.href}>{post.title}</a></h2>
+				</div>
+				<p>{post.description}</p>
+			</article>
+		))}
+	</section>
+</BaseLayout>
+
+<style>
+	.blog-hero {
+		padding-bottom: 2.5rem;
+	}
+
+	.blog-hero h1 {
+		max-width: 900px;
+		font-size: clamp(2.1rem, 4vw, 3.4rem);
+	}
+
+	.post-list {
+		display: grid;
+		gap: 1rem;
+		padding-top: 0;
+	}
+
+	.post-list article {
+		display: grid;
+		grid-template-columns: minmax(220px, 0.45fr) minmax(0, 1fr);
+		gap: 1.5rem;
+		border-top: 1px solid var(--line);
+		padding: 1.5rem 0;
+	}
+
+	time {
+		color: var(--muted);
+		font-size: 0.92rem;
+	}
+
+	h2 {
+		margin: 0.2rem 0 0;
+		font-size: clamp(1.45rem, 3vw, 2rem);
+		line-height: 1.15;
+	}
+
+	h2 a {
+		text-decoration: none;
+	}
+
+	.post-list p {
+		color: var(--muted);
+		max-width: 680px;
+	}
+
+	@media (max-width: 720px) {
+		.post-list article {
+			grid-template-columns: 1fr;
+			gap: 0.7rem;
+		}
+	}
+</style>

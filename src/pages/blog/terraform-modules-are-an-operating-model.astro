@@ -1,0 +1,229 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+	title="Terraform Modules Are an Operating Model | Lior Abitbol"
+	description="A first blog story on Terraform module strategy, foundation modules, pattern modules, and thin environment configurations."
+>
+	<article class="post">
+		<header>
+			<a class="back-link" href="/blog">Back to blog</a>
+			<p class="section-kicker">February 10, 2026</p>
+			<h1>Terraform Modules Are an Operating Model</h1>
+				<p>
+					The interesting part of a Terraform module strategy is not the modules
+					themselves. It is the <strong>distribution of responsibility around them</strong>.
+				</p>
+			</header>
+
+			<div class="post-body">
+				<p>
+				I started the
+				<a href="https://github.com/liorabitbol/terraform-modules-strategy" target="_blank" rel="noreferrer">
+					Terraform Module Strategy
+					</a>
+					repository as a reference implementation for how infrastructure code can be
+					organized when the goal is not just getting a single environment to apply cleanly,
+					but building something that scales across teams.
+				</p>
+
+				<p>
+					The repository is structured around three layers:
+					<strong>foundation modules, pattern modules, and environments</strong>. That looks
+					like a folder structure, but it is really an <strong>operating model</strong>.
+				</p>
+
+				<h2>Foundation modules keep primitives honest</h2>
+				<p>
+					Foundation modules define low-level building blocks: VPCs, security groups, KMS
+					keys, S3 buckets, SNS topics, SQS queues, and IAM policies.
+				</p>
+				<p>They should:</p>
+				<ul>
+					<li>do one thing well</li>
+					<li>avoid environment-specific logic</li>
+					<li>expose clean, explicit inputs and outputs</li>
+				</ul>
+				<p>
+					That constraint matters because foundation modules are where reuse can quietly turn
+					into coupling. If a primitive knows too much about a specific application or team,
+					it stops being a foundation and becomes <strong>hidden policy</strong>.
+				</p>
+
+				<h2>Pattern modules encode the opinion</h2>
+				<p>Pattern modules are where opinion belongs.</p>
+				<p>In this repo:</p>
+				<ul>
+					<li>
+						<code>app-network</code> composes VPC and security group foundations into an
+						application networking baseline
+					</li>
+					<li>
+						<code>event-driven</code> composes SNS, SQS, IAM policy, DLQ handling, optional
+						KMS encryption, FIFO support, and subscription wiring
+					</li>
+				</ul>
+				<p>
+					This is the layer application teams should consume. It reduces decision fatigue
+					without hiding important outputs. Instead of asking every team to reassemble the
+					same infrastructure checklist, the platform provides a
+					<strong>small set of coherent patterns with clear contracts</strong>.
+				</p>
+
+				<h2>Environments should stay boring</h2>
+				<p>
+					The <code>envs/dev</code> directory is intentionally thin. It consumes pattern
+					modules and avoids defining infrastructure resources directly.
+				</p>
+				<p>That is the point.</p>
+				<p>Environments should:</p>
+				<ul>
+					<li>declare intent</li>
+					<li>pass configuration</li>
+					<li>remain repeatable</li>
+				</ul>
+				<p>
+					When environment directories become the place where exceptions and one-off
+					resources accumulate, the module strategy starts to collapse.
+				</p>
+				<p>A more scalable model is:</p>
+				<blockquote>
+					<p>
+						keep infrastructure logic in modules, and keep environments as validation and
+						configuration layers.
+					</p>
+				</blockquote>
+
+				<h2>Standards are part of the product</h2>
+				<p>
+					The repository treats quality controls as part of the system:
+				</p>
+				<ul>
+					<li>Terraform formatting and validation run in CI</li>
+					<li><code>terraform-docs</code> ensures module documentation stays current</li>
+					<li>
+						Modules use explicit version constraints, typed variables, and clear descriptions
+					</li>
+				</ul>
+				<p>This is not decoration.</p>
+				<p>
+					For internal platform modules, documentation and validation are part of the
+					<strong>developer experience</strong>. A module without a clear contract is not a
+					platform product. It is just shared code.
+				</p>
+
+				<h2>The strategy</h2>
+				<p>
+					Terraform module design is less about collecting reusable snippets and more about
+					deciding <strong>where different types of decisions should live</strong>.
+				</p>
+				<ul>
+					<li>Primitives live in foundation modules</li>
+					<li>Organizational defaults live in pattern modules</li>
+					<li>Environment intent lives in environment directories</li>
+					<li>CI and documentation enforce consistency</li>
+				</ul>
+				<p>
+					That separation is what makes the model scalable. It allows platform teams to
+					improve standards and evolve patterns without forcing every application team to
+					understand low-level AWS details.
+				</p>
+				<p>
+					<em>
+						This repository reflects how I think about Terraform in the context of internal
+						platforms and developer experience systems.
+					</em>
+				</p>
+			</div>
+		</article>
+	</BaseLayout>
+
+<style>
+	.post {
+		width: min(820px, calc(100% - 2rem));
+		margin: 0 auto;
+		padding: clamp(3rem, 7vw, 5.5rem) 0;
+	}
+
+	.back-link {
+		display: inline-block;
+		margin-bottom: 2rem;
+		color: var(--muted);
+		text-decoration: none;
+	}
+
+	h1 {
+		margin: 0.5rem 0 1rem;
+		font-size: clamp(2.7rem, 6vw, 5rem);
+		line-height: 1;
+	}
+
+	header > p:last-child {
+		color: var(--muted);
+		font-size: clamp(1.12rem, 2vw, 1.35rem);
+	}
+
+		.post-body {
+			display: grid;
+			gap: 1.15rem;
+			margin-top: 2.5rem;
+			color: var(--muted);
+			font-size: 1.08rem;
+			line-height: 1.72;
+		}
+
+	.post-body h2 {
+		margin: 1.3rem 0 0;
+		font-size: clamp(1.6rem, 3vw, 2.2rem);
+		line-height: 1.1;
+	}
+
+		.post-body p {
+			color: inherit;
+		}
+
+		.post-body strong {
+			color: var(--ink);
+			font-weight: 730;
+		}
+
+		.post-body ul {
+			display: grid;
+			gap: 0.45rem;
+			margin: 0;
+			padding-left: 1.2rem;
+			color: inherit;
+		}
+
+		.post-body li::marker {
+			color: var(--accent-dark);
+		}
+
+		.post-body code {
+			border: 1px solid var(--line);
+			border-radius: 5px;
+			background: var(--surface);
+			color: var(--accent-dark);
+			font-family: inherit;
+			font-size: 0.95em;
+			font-weight: 650;
+			padding: 0.08rem 0.28rem;
+		}
+
+		.post-body blockquote {
+			margin: 0.2rem 0;
+			border-left: 3px solid var(--accent-dark);
+			background: color-mix(in srgb, var(--surface) 82%, var(--paper));
+			padding: 0.9rem 1rem;
+		}
+
+		.post-body blockquote p {
+			color: var(--ink);
+			font-weight: 650;
+		}
+
+		.post-body em {
+			color: var(--ink);
+		}
+	</style>
