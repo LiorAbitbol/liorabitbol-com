@@ -1,43 +1,88 @@
-# Astro Starter Kit: Minimal
+# liorabitbol.com
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Personal professional website for Lior Abitbol, built with Astro.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The site presents platform engineering work, developer experience projects, a resume, and blog writing around infrastructure operating models, AI-enabled engineering systems, governance-as-code, and internal platforms.
 
-## 🚀 Project Structure
+## Site Sections
 
-Inside of your Astro project, you'll see the following folders and files:
+- `/` - Homepage with professional positioning, projects, resume summary, and blog preview.
+- `/resume` - Resume page covering platform engineering, DevEx, AWS automation, governance-as-code, enterprise infrastructure, and technical leadership.
+- `/projects/[slug]` - Dedicated project pages generated from shared project data.
+- `/blog` - Blog index.
+- `/blog/terraform-modules-are-an-operating-model` - First blog post.
+
+## Project Structure
 
 ```text
 /
 ├── public/
+│   └── favicon.svg
 ├── src/
+│   ├── data/
+│   │   └── projects.ts
+│   ├── layouts/
+│   │   └── BaseLayout.astro
 │   └── pages/
-│       └── index.astro
-└── package.json
+│       ├── index.astro
+│       ├── resume.astro
+│       ├── blog/
+│       │   ├── index.astro
+│       │   └── terraform-modules-are-an-operating-model.astro
+│       └── projects/
+│           └── [slug].astro
+├── AGENTS.md
+├── package.json
+└── README.md
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Content Notes
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Project cards and project detail pages are driven from `src/data/projects.ts`.
 
-Any static assets, like images, can be placed in the `public/` directory.
+Current projects:
 
-## 🧞 Commands
+- Policy Mesh - deterministic AI control plane for auditable model routing.
+- StackLayer - reproducible Kubernetes platform lab.
+- Linktuate - website validation tool, in progress.
+- TerraLens - Terraform analysis tool, coming soon.
 
-All commands are run from the root of the project, from a terminal:
+The shared page shell, global styles, navigation, footer, and core design tokens live in `src/layouts/BaseLayout.astro`.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Development
 
-## 👀 Want to learn more?
+Requires Node.js `>=22.12.0`.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Install dependencies:
+
+```powershell
+npm.cmd install
+```
+
+Start the dev server:
+
+```powershell
+$env:ASTRO_TELEMETRY_DISABLED='1'; npm.cmd run dev -- --host 127.0.0.1 --port 4321
+```
+
+Build the site:
+
+```powershell
+$env:ASTRO_TELEMETRY_DISABLED='1'; npm.cmd run build
+```
+
+Preview the production build:
+
+```powershell
+$env:ASTRO_TELEMETRY_DISABLED='1'; npm.cmd run preview
+```
+
+PowerShell may block `npm.ps1`, so `npm.cmd` is used in the examples.
+
+## Working Notes
+
+- Keep the site simple: Astro pages, shared data, and plain CSS.
+- Run `npm.cmd run build` before considering changes complete.
+- Prefer project-specific content in `src/data/projects.ts` instead of hardcoding individual project pages.
+- Keep copy focused on platform engineering, developer experience, AI systems, governance, automation, and infrastructure.
+- `AGENTS.md` contains a fuller project handoff for future coding sessions.

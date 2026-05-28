@@ -177,10 +177,10 @@ const education = [
 		</div>
 	</section>
 
-		<section class="page-section resume-grid">
-			<section>
-				<p class="section-kicker">Core Capabilities</p>
-				<div class="capability-list">
+	<section class="page-section resume-grid">
+		<section>
+			<p class="section-kicker">Core Capabilities</p>
+			<div class="capability-list">
 				{capabilities.map((capability) => (
 					<article>
 						<h3>{capability.title}</h3>
@@ -216,15 +216,14 @@ const education = [
 		</div>
 	</section>
 
-		<section class="page-section education">
-			<div>
-				<p class="section-kicker">Education</p>
-			</div>
-			<div class="education-list">
-				{education.map((item) => (
+	<section class="page-section education">
+		<div>
+		<p class="section-kicker">Education</p>
+	</div>
+		<div class="education-list">
+			{education.map((item) => (
 				<article>
-					<strong>{item.degree}</strong>
-					<h3>{item.school}</h3>
+					<h3>{item.degree} - {item.school}</h3>
 					<p>{item.focus}</p>
 				</article>
 			))}
@@ -366,25 +365,33 @@ const education = [
 		color: var(--muted);
 	}
 
-	.capability-list {
+	.capability-list,
+	.education-list {
 		display: grid;
 		gap: 1rem;
+		margin: 0;
+		padding: 0;
+		text-align: left;
 	}
 
-	.capability-list article {
-		border: 1px solid var(--line);
-		border-radius: 8px;
-		background: var(--surface);
-		padding: 1rem;
+	.capability-list article,
+	.education-list article {
+		margin: 0;
+		text-indent: 0;
 	}
 
-	.capability-list h3 {
-		margin: 0 0 0.35rem;
-		font-size: 1.08rem;
-		line-height: 1.25;
+	.capability-list h3,
+	.education-list h3 {
+		margin: 0;
+		color: var(--ink);
+		font-size: 1.05rem;
+		font-weight: 780;
+		line-height: 1.35;
 	}
 
-	.capability-list p {
+	.capability-list p,
+	.education-list p {
+		margin: 0.18rem 0 0;
 		color: var(--muted);
 	}
 
@@ -399,15 +406,13 @@ const education = [
 
 	.timeline {
 		display: grid;
-		gap: 1rem;
+		gap: 2rem;
 	}
 
 	.timeline article {
 		display: grid;
 		grid-template-columns: minmax(220px, 0.33fr) minmax(0, 1fr);
 		gap: 1.5rem;
-		border-top: 1px solid var(--line);
-		padding: 1.5rem 0;
 	}
 
 	.job-meta h3 {
@@ -425,33 +430,6 @@ const education = [
 
 	.education {
 		border-top: 1px solid var(--line);
-	}
-
-	.education-list {
-		display: grid;
-		gap: 1.35rem;
-	}
-
-	.education-list article {
-		border: 1px solid var(--line);
-		border-radius: 8px;
-		background: var(--surface);
-		padding: 1.2rem;
-	}
-
-	.education-list strong {
-		color: var(--accent-dark);
-		font-size: 0.92rem;
-	}
-
-	.education-list h3 {
-		margin: 0.28rem 0 0.55rem;
-		font-size: 1.2rem;
-		line-height: 1.2;
-	}
-
-	.education-list p {
-		color: var(--muted);
 	}
 
 	.resume-cta {
