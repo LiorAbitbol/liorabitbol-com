@@ -1,104 +1,38 @@
 # Deployment Runbook
 
-This site is an Astro static site for `liorabitbol.com`. The production build is generated into `dist/` and can be deployed by any static hosting provider.
+This site is deployed through Cloudflare Pages from the Git repository. A push to the production branch triggers Cloudflare to build and publish the site.
 
-## Prerequisites
-
-- Node.js `>=22.12.0`
-- Dependencies installed with `npm.cmd install`
-- A static hosting target connected to `liorabitbol.com`
-- DNS access for `liorabitbol.com`
-
-PowerShell may block `npm.ps1`, so use `npm.cmd` in the commands below.
-
-## Local Validation
+## Normal Publish Flow
 
 From the repository root:
 
 ```powershell
 $env:ASTRO_TELEMETRY_DISABLED='1'; npm.cmd run build
-```
-
-The build should complete successfully and generate the production site in `dist/`.
-
-To inspect the production build locally:
-
-```powershell
-$env:ASTRO_TELEMETRY_DISABLED='1'; npm.cmd run preview
-```
-
-Open the local preview URL printed by Astro and check:
-
-- Homepage: `/`
-- Resume: `/resume`
-- Projects index section on the homepage
-- Project detail pages under `/projects/...`
-- Blog index: `/blog`
-- Blog post: `/blog/terraform-modules-are-an-operating-model`
-
-## Commit and Push
-
-Review changed files:
-
-```powershell
 git status
 git diff
-```
-
-Commit the changes:
-
-```powershell
 git add .
-git commit -m "Update website content"
-```
-
-Push to the repository branch used by the hosting provider:
-
-```powershell
+git commit -m "Update website"
 git push
 ```
 
-## Hosting Setup
+Cloudflare Pages automatically deploys after the pushed commit lands on the production branch.
 
-Configure the hosting provider as a static Astro site.
+## Cloudflare Build Settings
 
-Recommended build settings:
+These settings should already be configured in Cloudflare Pages:
 
-- Build command: `npm.cmd run build`
-- Output directory: `dist`
-- Node version: `>=22.12.0`
-- Production URL: `https://liorabitbol.com`
+- Framework preset: `Astro`
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Root directory: repository root
+- Production branch: `main`
+- Environment variable: `NODE_VERSION=22.12.0`
 
-If the host uses Linux commands instead of Windows commands, use:
-
-```bash
-npm run build
-```
-
-The Astro config already sets:
-
-```js
-site: 'https://liorabitbol.com'
-```
-
-## DNS
-
-Point `liorabitbol.com` at the hosting provider according to that provider's instructions.
-
-Common patterns:
-
-- Apex domain, `liorabitbol.com`: `A` records or provider-specific `ALIAS` / `ANAME`
-- `www.liorabitbol.com`: `CNAME` to the host-provided target
-
-Choose one canonical domain and redirect the other to it. The current site is configured around:
-
-```text
-https://liorabitbol.com
-```
+Cloudflare builds on Linux, so the Cloudflare build command uses `npm run build`. Local PowerShell examples use `npm.cmd` because PowerShell may block `npm.ps1`.
 
 ## Post-Deploy Checks
 
-After deployment completes, verify:
+After Cloudflare finishes deploying, verify:
 
 - `https://liorabitbol.com/`
 - `https://liorabitbol.com/resume`
@@ -107,14 +41,15 @@ After deployment completes, verify:
 - `https://liorabitbol.com/projects/policy-mesh`
 - `https://liorabitbol.com/projects/stacklayer`
 
-Also check:
+Also check that navigation, favicon, GitHub, LinkedIn, and email links work.
 
-- The favicon loads.
-- Navigation links work.
-- External GitHub and LinkedIn links work.
-- Email links open `lior@liorabitbol.com`.
-- The site is served over HTTPS.
+## Rollback
 
-## Future Blog Subdomain
+If a deployment breaks the site:
 
-If `blog.liorabitbol.com` is needed later, prefer handling it through hosting and DNS unless the blog becomes a separate deployment.
+1. Open the Cloudflare Pages project.
+2. Go to **Deployments**.
+3. Select the previous working deployment.
+4. Roll back or promote the previous deployment.
+
+Then fix the issue locally, run the build, commit, and push again.
