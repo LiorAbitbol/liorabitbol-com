@@ -1,0 +1,90 @@
+---
+import ProjectDetailLayout from "../../components/ProjectDetailLayout.astro";
+---
+
+<ProjectDetailLayout
+	name="TerraLens"
+	label="Infrastructure Analysis"
+	status="Coming soon"
+	summary="Terraform analysis tool for surfacing infrastructure risk before deployment."
+>
+	<section class="project-section">
+		<p class="section-kicker">What it is</p>
+		<h2>
+			TerraLens is a planned Terraform analysis tool designed to surface infrastructure risks
+			before deployment.
+		</h2>
+		<div class="section-stack">
+			<p>
+				It focuses on making configuration, security, and governance issues visible during
+				development rather than at apply time.
+			</p>
+		</div>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Problem</p>
+		<p class="section-text">
+			Infrastructure-as-code changes often introduce security risks, misconfigurations, and
+			policy violations that are difficult to detect during code review and are typically
+			discovered late in the deployment process.
+		</p>
+		<div class="section-stack">
+			<p>This creates delayed feedback, inconsistent standards, and increased operational risk.</p>
+		</div>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Approach</p>
+		<p class="section-text">TerraLens is designed as a pre-deployment validation layer.</p>
+		<ul class="detail-list">
+			<li>Analyzes Terraform configurations and plans.</li>
+			<li>Identifies risky patterns and misconfigurations.</li>
+			<li>Evaluates code against defined rules and policies.</li>
+			<li>Produces structured findings for developers.</li>
+		</ul>
+		<p class="section-text section-note">
+			The goal is to shift infrastructure validation earlier into the workflow, where issues are
+			easier to understand and fix.
+		</p>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Planned Capabilities</p>
+		<ul class="narrative-list">
+			<li><strong>Terraform analysis:</strong> Detection of misconfigurations, unsafe defaults, and anti-patterns.</li>
+			<li><strong>Policy checks:</strong> Rule-based validation aligned to organizational standards.</li>
+			<li><strong>Risk classification:</strong> Severity-based findings to prioritize remediation.</li>
+			<li><strong>Pre-deployment focus:</strong> Designed to run before terraform apply as part of development workflows.</li>
+			<li><strong>Extensible policy model:</strong> Future support for reusable policy packs and customizable rules.</li>
+			<li><strong>CI/CD integration:</strong> Future pipeline-based validation with pass/fail enforcement.</li>
+			<li><strong>Explainable findings:</strong> Future reasoning and remediation guidance for each issue.</li>
+		</ul>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Why it matters</p>
+		<div class="section-stack">
+			<p>Infrastructure validation should be part of the development workflow, not a post-deployment concern.</p>
+			<p>
+				TerraLens is intended to demonstrate how infrastructure governance can be consistent,
+				automated, and developer-friendly.
+			</p>
+			<p>
+				TerraLens complements linters and scanners by focusing on when and how infrastructure
+				risk is surfaced in the development lifecycle.
+			</p>
+		</div>
+	</section>
+
+	<section class="project-section tech-section">
+		<p class="section-kicker">Technology</p>
+		<ul class="narrative-list">
+			<li>Terraform</li>
+			<li>IaC analysis</li>
+			<li>Policy checks</li>
+			<li>Risk detection</li>
+			<li>CI/CD</li>
+		</ul>
+	</section>
+</ProjectDetailLayout>

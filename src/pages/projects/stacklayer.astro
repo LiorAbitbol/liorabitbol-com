@@ -1,0 +1,173 @@
+---
+import ProjectDetailLayout from "../../components/ProjectDetailLayout.astro";
+---
+
+<ProjectDetailLayout
+	name="StackLayer"
+	label="Platform Lab"
+	status="Active"
+	summary="Reproducible platform engineering environment for exploring Internal Developer Platform, GitOps, observability, and DevEx patterns."
+>
+	<section class="project-section">
+		<p class="section-kicker">What it is</p>
+		<h2>
+			StackLayer is a reproducible platform engineering environment for exploring modern
+			Internal Developer Platform, GitOps, observability, and developer experience patterns
+			in a controlled, enterprise-style setting.
+		</h2>
+		<div class="section-stack">
+			<p>
+				The project provides a realistic environment for validating platform architecture
+				decisions, delivery workflows, automation patterns, and governance models without
+				relying on public cloud infrastructure.
+			</p>
+			<p>
+				By combining virtualization, Kubernetes, GitOps, CI/CD, and observability into a
+				layered architecture, StackLayer serves as a proving ground for platform capabilities
+				commonly found in modern engineering organizations.
+			</p>
+		</div>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Core Question</p>
+		<p class="section-text">
+			How can platform teams deliver self-service capabilities that improve developer
+			productivity while maintaining governance, consistency, and operational visibility?
+		</p>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Why I built it</p>
+		<p class="section-text">
+			Throughout my career, I have consistently gravitated toward platform engineering and
+			developer enablement. Whether building private cloud platforms, Internal Developer
+			Platforms, automation frameworks, or developer tooling, the common theme has been
+			reducing friction and improving engineering productivity.
+		</p>
+		<div class="section-stack">
+			<p>
+				As platform engineering evolves, organizations are increasingly adopting IDPs,
+				GitOps operating models, Kubernetes-based delivery, self-service infrastructure,
+				platform governance, policy controls, and AI-enabled developer tooling.
+			</p>
+			<p>
+				StackLayer creates a repeatable environment where those concepts can be explored,
+				validated, and refined without the complexity, cost, or constraints of cloud-based
+				experimentation.
+			</p>
+		</div>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Design Goals</p>
+		<ul class="narrative-list">
+			<li><strong>Reproducibility:</strong> Every component should be deployable and recoverable through automation rather than manual configuration.</li>
+			<li><strong>Self-service:</strong> Platform capabilities should reduce operational dependencies and help developers provision and consume services independently.</li>
+			<li><strong>GitOps:</strong> Infrastructure and platform changes should be managed declaratively through source control and automated reconciliation.</li>
+			<li><strong>Observability by default:</strong> Metrics, dashboards, and monitoring should be treated as first-class platform capabilities.</li>
+			<li><strong>Governance:</strong> Platform capabilities should encourage consistency, standards, and operational controls without creating unnecessary friction.</li>
+			<li><strong>Developer experience:</strong> The platform should simplify common workflows and reduce the cognitive load required to build, deploy, and operate applications.</li>
+		</ul>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Architecture</p>
+		<h2>StackLayer follows a layered architecture similar to enterprise platform engineering organizations.</h2>
+		<ul class="narrative-list section-note">
+			<li><strong>Infrastructure layer:</strong> VMware Workstation, Vagrant, Linux virtual machines, and private networking provide the compute, networking, isolation, and lifecycle foundation.</li>
+			<li><strong>Kubernetes layer:</strong> kubeadm, a control plane, and worker nodes provide container orchestration, workload scheduling, service management, and cluster operations.</li>
+			<li><strong>Platform services layer:</strong> MetalLB, NGINX Ingress, persistent storage, and TLS management provide traffic routing, service exposure, storage abstraction, and reliability foundations.</li>
+			<li><strong>Delivery layer:</strong> GitHub, ArgoCD, and GitOps repositories provide continuous delivery, declarative deployments, environment consistency, and operational automation.</li>
+			<li><strong>Observability layer:</strong> Prometheus and Grafana provide metrics collection, dashboards, capacity monitoring, and platform health visibility.</li>
+		</ul>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Current Capabilities</p>
+		<ul class="detail-list">
+			<li>Reproducible Kubernetes environments.</li>
+			<li>GitOps-driven deployment workflows.</li>
+			<li>Platform service validation.</li>
+			<li>Observability and monitoring.</li>
+			<li>Infrastructure automation.</li>
+			<li>Platform experimentation and testing.</li>
+		</ul>
+		<p class="section-text section-note">
+			The environment enables realistic testing of platform patterns commonly found in
+			enterprise engineering organizations.
+		</p>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Roadmap</p>
+		<ul class="narrative-list">
+			<li><strong>Internal Developer Platform:</strong> Backstage, service catalogs, golden paths, and developer portals.</li>
+			<li><strong>AI platform services:</strong> Ollama, local LLM hosting, AI governance, and AI-assisted development workflows.</li>
+			<li><strong>Platform governance:</strong> Policy-as-code, compliance validation, and standardized platform controls.</li>
+			<li><strong>Developer productivity:</strong> Self-service provisioning, developer onboarding workflows, platform templates, and platform scorecards.</li>
+		</ul>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Key Learnings</p>
+		<ul class="narrative-list">
+			<li><strong>Platform engineering is about abstraction:</strong> The value of a platform is not the infrastructure itself. The value comes from simplifying complexity for platform consumers.</li>
+			<li><strong>GitOps improves consistency:</strong> GitOps improves reproducibility and operational consistency, but requires careful repository and workflow design.</li>
+			<li><strong>Observability must be built in:</strong> Operational visibility is more effective when treated as a platform capability rather than an afterthought.</li>
+			<li><strong>Developer experience matters:</strong> Technically sound platforms still struggle with adoption when workflows are difficult to understand or use.</li>
+			<li><strong>Governance and self-service must coexist:</strong> Successful platforms provide autonomy while still enforcing organizational standards and controls.</li>
+		</ul>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Why it matters</p>
+		<div class="section-stack">
+			<p>
+				StackLayer represents more than a Kubernetes laboratory. It serves as a platform
+				engineering proving ground for exploring Internal Developer Platforms, self-service
+				infrastructure, governance models, GitOps workflows, observability patterns, and
+				AI-enabled platform capabilities.
+			</p>
+			<p>
+				Many of the challenges being explored within StackLayer mirror those faced by
+				enterprise engineering organizations: developer onboarding, platform adoption,
+				self-service delivery, governance and compliance, operational visibility, and
+				engineering productivity.
+			</p>
+			<p>
+				The project provides a practical environment for evaluating those challenges and
+				applying platform engineering principles to improve developer experience at scale.
+			</p>
+		</div>
+	</section>
+
+	<section class="project-section tech-section">
+		<p class="section-kicker">Technology</p>
+		<ul class="narrative-list">
+			<li>VMware Workstation</li>
+			<li>Vagrant</li>
+			<li>Linux virtual machines</li>
+			<li>Kubernetes</li>
+			<li>kubeadm</li>
+			<li>MetalLB</li>
+			<li>NGINX Ingress</li>
+			<li>TLS management</li>
+			<li>GitHub</li>
+			<li>ArgoCD</li>
+			<li>GitOps</li>
+			<li>Prometheus</li>
+			<li>Grafana</li>
+		</ul>
+	</section>
+
+	<section class="project-section link-section">
+		<p class="section-kicker">Links</p>
+		<ul class="project-links">
+			<li><a href="https://github.com/liorabitbol/stacklayer" target="_blank" rel="noreferrer">GitHub repository</a></li>
+			<li><a href="https://github.com/liorabitbol/stacklayer/blob/main/docs/architecture.md" target="_blank" rel="noreferrer">Architecture docs</a></li>
+			<li><a href="https://github.com/liorabitbol/stacklayer/blob/main/docs/prerequisites.md" target="_blank" rel="noreferrer">Prerequisites</a></li>
+			<li><a href="https://github.com/liorabitbol/stacklayer/tree/main/docs/tutorials" target="_blank" rel="noreferrer">Tutorials</a></li>
+		</ul>
+	</section>
+</ProjectDetailLayout>

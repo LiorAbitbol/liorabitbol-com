@@ -1,0 +1,97 @@
+---
+import ProjectDetailLayout from "../../components/ProjectDetailLayout.astro";
+---
+
+<ProjectDetailLayout
+	name="Linktuate"
+	label="Developer Tooling"
+	status="In progress"
+	summary="Website validation tool for structured analysis of site health and trust signals."
+>
+	<section class="project-section">
+		<p class="section-kicker">What it is</p>
+		<h2>
+			Linktuate is a planned website validation tool designed to analyze a given URL and
+			surface common issues related to site health, trust, and discoverability.
+		</h2>
+		<div class="section-stack">
+			<p>
+				It focuses on providing a clear, structured view of problems that are often
+				overlooked in day-to-day development and content updates.
+			</p>
+		</div>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Problem</p>
+		<p class="section-text">
+			Website issues such as broken links, expired SSL certificates, and missing metadata are
+			easy to miss until they begin to impact user experience, search visibility, and overall
+			credibility.
+		</p>
+		<div class="section-stack">
+			<p>
+				These issues are often identified reactively rather than proactively, and existing
+				tools tend to produce noisy or fragmented outputs.
+			</p>
+		</div>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Approach</p>
+		<p class="section-text">Linktuate is designed as a simple, focused validation tool.</p>
+		<ul class="detail-list">
+			<li>Scans a website starting from a root URL.</li>
+			<li>Identifies common issues across links, security, and metadata.</li>
+			<li>Aggregates findings into a structured report.</li>
+		</ul>
+		<p class="section-text section-note">
+			The goal is to make site health easy to understand without requiring deep technical analysis.
+		</p>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Planned Capabilities</p>
+		<ul class="narrative-list">
+			<li><strong>Link integrity checks:</strong> Detection of broken, invalid, or unreachable links.</li>
+			<li><strong>SSL validation:</strong> Inspection of certificate status and expiration.</li>
+			<li><strong>Metadata analysis:</strong> Identification of missing or inconsistent titles and descriptions.</li>
+			<li><strong>Basic SEO signals:</strong> Surface-level checks for discoverability issues.</li>
+			<li><strong>Structured reporting:</strong> Clear, organized output instead of raw crawler logs.</li>
+			<li><strong>Future enhancements:</strong> Historical scans, exportable reports, and deeper technical analysis.</li>
+		</ul>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Why it matters</p>
+		<div class="section-stack">
+			<p>Validation should be simple, repeatable, and accessible, not buried in complex tooling.</p>
+			<p>
+				Linktuate demonstrates how common site health concerns can be surfaced in a way that
+				is easy to understand, actionable, and consistent across use cases.
+			</p>
+			<p>
+				While simple in scope, it aligns with developer tooling principles around clarity,
+				feedback, and usability.
+			</p>
+		</div>
+	</section>
+
+	<section class="project-section tech-section">
+		<p class="section-kicker">Technology</p>
+		<ul class="narrative-list">
+			<li>Website scanning</li>
+			<li>Link analysis</li>
+			<li>SSL checks</li>
+			<li>SEO signals</li>
+			<li>Reporting</li>
+		</ul>
+	</section>
+
+	<section class="project-section link-section">
+		<p class="section-kicker">Links</p>
+		<ul class="project-links">
+			<li><a href="https://linktuate.com" target="_blank" rel="noreferrer">Product website</a></li>
+		</ul>
+	</section>
+</ProjectDetailLayout>

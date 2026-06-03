@@ -1,0 +1,207 @@
+---
+import ProjectDetailLayout from "../../components/ProjectDetailLayout.astro";
+---
+
+<ProjectDetailLayout
+	name="Policy Mesh"
+	label="AI Governance"
+	status="Active"
+	summary="Governed AI control plane for observable, policy-driven access to local and cloud-based LLMs."
+>
+	<section class="project-section">
+		<p class="section-kicker">What it is</p>
+		<h2>
+			Policy Mesh is an open-source AI control plane designed to provide governed,
+			observable, and policy-driven access to both local and cloud-based Large Language
+			Models.
+		</h2>
+		<div class="section-stack">
+			<p>
+				As organizations adopt AI, engineering teams need consistent answers for model
+				selection, data locality, cost control, auditability, and governance enforcement.
+			</p>
+			<p>
+				Policy Mesh centralizes those concerns into a single control plane that evaluates
+				requests against organizational policies and routes them to the most appropriate
+				model provider.
+			</p>
+		</div>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Core Goal</p>
+		<p class="section-text">
+			Enable self-service AI consumption without sacrificing governance, auditability, or
+			cost control.
+		</p>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Why I built it</p>
+		<p class="section-text">
+			Throughout my career, I have been drawn to platform engineering challenges where
+			centralized capabilities reduce complexity and improve consistency across teams.
+		</p>
+		<div class="section-stack">
+			<p>
+				The same pattern is emerging in enterprise AI adoption. Many organizations are
+				experimenting with OpenAI, Anthropic, local models, hosted models, and private AI
+				environments, while developers are often left to make routing decisions themselves.
+			</p>
+			<p>
+				Policy Mesh explores how platform engineering principles can be applied to AI
+				consumption by creating a centralized decision layer that separates governance
+				concerns from application logic.
+			</p>
+		</div>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Design Goals</p>
+		<ul class="narrative-list">
+			<li><strong>Governance by default:</strong> Policies should be enforced automatically rather than relying on developers to remember rules and procedures.</li>
+			<li><strong>Provider abstraction:</strong> Applications should interact with a consistent interface regardless of the underlying AI provider.</li>
+			<li><strong>Explainability:</strong> Routing decisions should be understandable, traceable, and auditable.</li>
+			<li><strong>Cost awareness:</strong> Organizations should be able to optimize AI usage based on cost, performance, and capability requirements.</li>
+			<li><strong>Security and privacy:</strong> Sensitive requests should be routed according to organizational data handling requirements.</li>
+			<li><strong>Observability:</strong> AI consumption should be visible, measurable, and reportable.</li>
+		</ul>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">The Problem</p>
+		<p class="section-text">
+			Without a centralized control plane, AI adoption pushes routing, governance, and
+			provider decisions into individual applications.
+		</p>
+		<ul class="narrative-list section-note">
+			<li><strong>Inconsistent governance:</strong> Different teams implement different controls, leading to fragmented policy enforcement.</li>
+			<li><strong>Cost sprawl:</strong> Applications may default to expensive models even when less costly alternatives are sufficient.</li>
+			<li><strong>Limited visibility:</strong> Organizations struggle to understand how AI services are being consumed.</li>
+			<li><strong>Provider lock-in:</strong> Applications become tightly coupled to specific model vendors.</li>
+			<li><strong>Duplicate logic:</strong> Every application must independently implement routing, governance, and provider integrations.</li>
+		</ul>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">The Solution</p>
+		<p class="section-text">
+			Policy Mesh acts as an intelligent decision layer between applications and AI providers.
+			Applications submit requests through a single API, and the control plane evaluates the
+			request before selecting the destination.
+		</p>
+		<ul class="detail-list">
+			<li>Data sensitivity.</li>
+			<li>Request characteristics.</li>
+			<li>Cost considerations.</li>
+			<li>Organizational policies.</li>
+			<li>Provider capabilities.</li>
+		</ul>
+		<p class="section-text section-note">
+			Applications remain unaware of the routing logic while governance remains centralized
+			and consistent.
+		</p>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Architecture</p>
+		<h2>Policy Mesh is built as a modular control plane with distinct responsibilities.</h2>
+		<ul class="narrative-list">
+			<li><strong>API layer:</strong> FastAPI and OpenAPI provide request intake, validation, authentication, and response normalization through a unified interface.</li>
+			<li><strong>Policy engine:</strong> Policy evaluation, routing decisions, governance enforcement, and explainable decision generation determine how each request should be handled.</li>
+			<li><strong>Provider layer:</strong> Provider integrations abstract OpenAI, Anthropic, Ollama, and future model targets without requiring application changes.</li>
+			<li><strong>Audit layer:</strong> Decision logging, request metadata, audit trails, and governance reporting provide traceability while avoiding unnecessary storage of sensitive request content.</li>
+			<li><strong>Observability layer:</strong> Prometheus metrics and structured logging provide request tracking, usage visibility, cost insight, and operational monitoring.</li>
+		</ul>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Current Capabilities</p>
+		<ul class="detail-list">
+			<li>Policy-based AI request routing.</li>
+			<li>Local and cloud model support.</li>
+			<li>Provider abstraction.</li>
+			<li>Audit logging.</li>
+			<li>Explainable decisioning.</li>
+			<li>Cost-aware routing.</li>
+			<li>API-driven consumption.</li>
+			<li>Observability and metrics.</li>
+		</ul>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Example Routing Scenarios</p>
+		<ul class="narrative-list">
+			<li><strong>Sensitive internal data:</strong> Requests containing sensitive business data can be routed to approved local models so data remains within organizational boundaries.</li>
+			<li><strong>Cost optimization:</strong> General-purpose requests can be routed to lower-cost models unless advanced capabilities are required.</li>
+			<li><strong>Provider resilience:</strong> Requests can fall back to alternative providers when primary providers become unavailable.</li>
+		</ul>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Roadmap</p>
+		<ul class="narrative-list">
+			<li><strong>Dynamic policy management:</strong> External policy definitions, policy versioning, and policy testing.</li>
+			<li><strong>Cost analytics:</strong> Spend reporting, cost optimization recommendations, and consumption forecasting.</li>
+			<li><strong>Compliance reporting:</strong> Governance dashboards, audit reporting, and policy compliance metrics.</li>
+			<li><strong>AI platform services:</strong> Model catalogs, self-service AI onboarding, developer portals, and usage scorecards.</li>
+			<li><strong>Multi-model orchestration:</strong> Workflow chaining, capability-based routing, and agent support.</li>
+		</ul>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Key Learnings</p>
+		<ul class="narrative-list">
+			<li><strong>AI governance is a platform problem:</strong> Many AI adoption challenges are fundamentally platform engineering challenges rather than model challenges.</li>
+			<li><strong>Centralization reduces complexity:</strong> Moving governance decisions into a shared control plane simplifies application development and improves consistency.</li>
+			<li><strong>Explainability matters:</strong> Organizations need visibility into why AI decisions are being made, not just the outcomes.</li>
+			<li><strong>Cost becomes a platform concern:</strong> As AI adoption grows, routing and governance decisions increasingly affect organizational spending.</li>
+			<li><strong>Platform patterns apply to AI:</strong> The same principles used in cloud platforms, Internal Developer Platforms, and self-service infrastructure can be applied to AI consumption.</li>
+		</ul>
+	</section>
+
+	<section class="project-section">
+		<p class="section-kicker">Why it matters</p>
+		<div class="section-stack">
+			<p>
+				Policy Mesh represents an exploration of how platform engineering principles can be
+				applied to enterprise AI adoption.
+			</p>
+			<p>
+				The project addresses challenges that many organizations are beginning to encounter:
+				AI governance, cost management, provider abstraction, security and privacy controls,
+				operational visibility, and developer self-service.
+			</p>
+			<p>
+				Rather than treating AI as a collection of isolated integrations, Policy Mesh
+				approaches AI consumption as a platform capability, embedding governance,
+				observability, and organizational standards directly into the platform.
+			</p>
+		</div>
+	</section>
+
+	<section class="project-section tech-section">
+		<p class="section-kicker">Technology</p>
+		<ul class="narrative-list">
+			<li>Python</li>
+			<li>FastAPI</li>
+			<li>OpenAPI</li>
+			<li>OpenAI</li>
+			<li>Anthropic</li>
+			<li>Ollama</li>
+			<li>Prometheus</li>
+			<li>Structured logging</li>
+			<li>Policy-driven routing</li>
+			<li>Audit logging</li>
+		</ul>
+	</section>
+
+	<section class="project-section link-section">
+		<p class="section-kicker">Links</p>
+		<ul class="project-links">
+			<li><a href="https://github.com/liorabitbol/policy-mesh" target="_blank" rel="noreferrer">GitHub repository</a></li>
+			<li><a href="https://github.com/liorabitbol/policy-mesh/blob/main/docs/architecture.md" target="_blank" rel="noreferrer">Architecture docs</a></li>
+			<li><a href="https://github.com/liorabitbol/policy-mesh/blob/main/docs/getting_started.md" target="_blank" rel="noreferrer">Getting started</a></li>
+		</ul>
+	</section>
+</ProjectDetailLayout>
