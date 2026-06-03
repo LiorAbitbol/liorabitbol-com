@@ -13,8 +13,9 @@ import { projects } from "../data/projects";
 					<p class="section-kicker">Professional home</p>
 					<h1>Lior Abitbol builds platform systems that shape how engineering works.</h1>
 					<p>
-						I design platform systems, developer workflows, and governance models that help 
-						teams move faster while maintaining clear standards and operational control.
+						I build platform capabilities that reduce engineering friction, improve developer
+						productivity, and enable organizations to scale delivery through self-service,
+						automation, and governance.
 					</p>
 				<div class="button-row">
 					<a class="button" href="mailto:lior@liorabitbol.com">Start a conversation</a>
@@ -41,6 +42,22 @@ import { projects } from "../data/projects";
 		</div>
 	</section>
 
+	<section class="page-section scale-section">
+		<p class="section-kicker">Platform leadership</p>
+		<h2 class="section-heading">Enterprise platform work across regulated environments.</h2>
+		<p class="section-copy">
+			Nearly 30 years across infrastructure, automation, platform engineering, and
+			developer experience, including financial services environments where platform
+			systems supported thousands of systems, self-service workflows, governance
+			requirements, and teams of 20+ engineers.
+		</p>
+		<ul class="principle-list">
+			<li><strong>Enterprise platform ownership</strong> across private cloud, automation, and internal tooling.</li>
+			<li><strong>Internal Developer Platforms and self-service</strong> that reduce operational dependency.</li>
+			<li><strong>Automation, governance, and visibility</strong> built into delivery and operations workflows.</li>
+		</ul>
+	</section>
+
 		<section class="page-section" id="projects">
 			<p class="section-kicker">Projects</p>
 			<h2 class="section-heading">Platform systems spanning AI, developer experience, and infrastructure.</h2>
@@ -58,6 +75,18 @@ import { projects } from "../data/projects";
 				</a>
 			))}
 		</div>
+	</section>
+
+	<section class="page-section philosophy-section">
+		<p class="section-kicker">Platform philosophy</p>
+		<h2 class="section-heading">How I think about platform engineering.</h2>
+		<ul class="principle-list">
+			<li><strong>Self-service over tickets</strong> so teams can move without waiting on manual handoffs.</li>
+			<li><strong>Automation over manual process</strong> to make delivery repeatable, faster, and less fragile.</li>
+			<li><strong>Governance embedded in platforms</strong> so standards are enforced through workflows, not memory.</li>
+			<li><strong>Observability by default</strong> because platform systems need operational visibility from the start.</li>
+			<li><strong>Developer experience as a platform capability</strong> that shapes how teams build, deploy, and operate software.</li>
+		</ul>
 	</section>
 
 	<section class="resume-band" id="resume">
@@ -196,6 +225,30 @@ import { projects } from "../data/projects";
 
 	.project-grid h3 {
 		margin-top: 0;
+	}
+
+	.scale-section {
+		border-bottom: 1px solid var(--line);
+	}
+
+	.principle-list {
+		display: grid;
+		gap: 0.8rem;
+		max-width: 820px;
+		margin: 1.5rem 0 0;
+		padding-left: 1.1rem;
+		color: var(--muted);
+		font-size: 1.05rem;
+	}
+
+	.principle-list strong {
+		color: var(--ink);
+		font-weight: 760;
+	}
+
+	.philosophy-section {
+		border-top: 1px solid var(--line);
+		background: var(--surface);
 	}
 
 	.resume-band {
