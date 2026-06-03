@@ -77,16 +77,19 @@ import { projects } from "../data/projects";
 		</div>
 	</section>
 
-	<section class="page-section philosophy-section">
-		<p class="section-kicker">Platform philosophy</p>
-		<h2 class="section-heading">How I think about platform engineering.</h2>
-		<ul class="principle-list">
-			<li><strong>Self-service over tickets</strong> so teams can move without waiting on manual handoffs.</li>
-			<li><strong>Automation over manual process</strong> to make delivery repeatable, faster, and less fragile.</li>
-			<li><strong>Governance embedded in platforms</strong> so standards are enforced through workflows, not memory.</li>
-			<li><strong>Observability by default</strong> because platform systems need operational visibility from the start.</li>
-			<li><strong>Developer experience as a platform capability</strong> that shapes how teams build, deploy, and operate software.</li>
-		</ul>
+	<section class="writing-band" id="blog-preview">
+		<div class="page-section writing-inner">
+				<div>
+					<p class="section-kicker">Blog</p>
+					<h2 class="section-heading">Writing about platform engineering, developer experience, and AI-enabled systems.</h2>
+				</div>
+				<p class="section-copy">
+					Notes and essays on the operating models behind engineering platforms:
+					infrastructure standards, governance-as-code, developer workflows, and the
+					choices that make technical systems easier to run at scale.
+				</p>
+			<a class="button secondary" href="/blog">Open blog</a>
+		</div>
 	</section>
 
 	<section class="resume-band" id="resume">
@@ -100,26 +103,11 @@ import { projects } from "../data/projects";
 						Staff/Principal-level experience building internal platforms, developer
 						tooling, governance-as-code systems, AWS automation, and enterprise
 						infrastructure capabilities across regulated environments.
-					</p>				
+					</p>
 			    </div>
 				<div class="button-row">
 				    <a class="button" href="/resume">View resume</a>
 				</div>
-		</div>
-	</section>
-
-	<section class="writing-band" id="blog-preview">
-		<div class="page-section writing-inner">
-				<div>
-					<p class="section-kicker">Blog</p>
-					<h2 class="section-heading">Writing about platform engineering, developer experience, and AI-enabled systems.</h2>
-				</div>
-				<p class="section-copy">
-					Notes and essays on the operating models behind engineering platforms:
-					infrastructure standards, governance-as-code, developer workflows, and the
-					choices that make technical systems easier to run at scale.
-				</p>
-			<a class="button secondary" href="/blog">Open blog</a>
 		</div>
 	</section>
 </BaseLayout>
@@ -244,11 +232,6 @@ import { projects } from "../data/projects";
 	.principle-list strong {
 		color: var(--ink);
 		font-weight: 760;
-	}
-
-	.philosophy-section {
-		border-top: 1px solid var(--line);
-		background: var(--paper);
 	}
 
 	.resume-band {
